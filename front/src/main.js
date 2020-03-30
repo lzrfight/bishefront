@@ -17,26 +17,26 @@ Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 /* eslint-disable no-new */
-router.beforeEach((to, from, next) => {
-  if (to.meta.requireAuth) {
-    if (store.state.user.username) {
-      next()
-    } else {
-      next({
-        path: 'login',
-        query: {redirect: to.fullPath}
-      })
-    }
-  } else {
-    next()
-  }
-})
+//router.beforeEach((to, from, next) => {
+ //if (to.meta.requireAuth) {
+  //if (store.state.user.username) {
+     //next()
+  // } else {
+    // next({
+     //  path: 'login',
+     // query: {redirect: to.fullPath}
+    //  })
+  // }
+ //} else {
+ // next()
+ //}
+//})
 
 new Vue({
   el: '#app',
   render: h => h(App),
   router,
-  store,
+  //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     store,
   components: {App},
   template: '<App/>'
 })
