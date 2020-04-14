@@ -36,8 +36,8 @@
     },
     methods: {
       login () {
-        this.$axios
-          .post('/login', {
+        const _this = this;
+        this.$axios.post('/login', {
             username: this.loginForm.username,
             password: this.loginForm.password
           })
@@ -46,7 +46,9 @@
               this.$alert('登陆成功', '提示', {
                 confirmButtonText: '确定'
               })
-              this.$router.replace({path: '/'})
+              _this.$store.commit('login', _this.loginForm)
+              var path = this.$route.query.redirect
+              this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
             }
             else {
               this.$alert('失败', '提示', {
