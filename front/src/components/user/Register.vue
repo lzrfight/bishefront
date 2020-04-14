@@ -42,12 +42,12 @@
               })
               this.$router.replace('/login')
             } else {
-              this.$alert('失败', '提示', {
+              this.$alert(resp.data.message, '提示', {
                 confirmButtonText: '确定'
               })
             }
           })
-          .catch(failResponse => {this.$alert("一点反应没有     ", '提示', {
+          .catch(failResponse => {this.$alert("一点反应没有", '提示', {
             confirmButtonText: '确定'
           })})
       }
