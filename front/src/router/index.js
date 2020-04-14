@@ -5,7 +5,14 @@ const Login = () => import('../components/user/Login')
 import Home from '../components/Home'
 import AppIndex from "../components/home/AppIndex"
 import Register from "../components/user/Register"
-import BackIndex from "../components/adimin/BackIndex"
+import NavMenu from "../components/common/NavMenu";
+const AdminLogin = () => import('../components/admin/AdminLogin')
+const BackIndex = () => import('../components/admin/BackIndex')
+// import AdminLogin from "../components/admin/AdminLogin";
+import Food from "../components/food/Food";
+import FoodIndex from "../components/food/FoodIndex";
+import Shopping from "../components/food/Shopping";
+import order from "../components/order/order";
 
 Vue.use(Router)
 
@@ -14,7 +21,7 @@ export default new Router({
   routes: [
     // 下面都是固定的写法
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
       redirect: '/index',
@@ -28,13 +35,18 @@ export default new Router({
           }
         },
         {
+          path: '/food',
+          name: 'FoodIndex',
+          component: FoodIndex,
+        },
+        {
           path: '/restaurant',
           name: 'restaurant',
           component: Restaurant,
           meta: {
-            requireAuth: true
+
           }
-        }
+        },
       ]
     },
     {
@@ -48,9 +60,24 @@ export default new Router({
       component: Register
     },
     {
-      path: '/backindex',
+      path: '/admin',
       name: 'backindex',
-      component: BackIndex,
+      component: BackIndex
+    },
+    {
+      path:'/loginadmin',
+      name:'AdminLogin',
+      component: AdminLogin
+    },
+    {
+      path:'/shopping',
+      name:'Shopping',
+      component:Shopping,
+    },
+    {
+      path:'/order',
+      name:'order',
+      component:order,
     }
   ]
 })
@@ -93,10 +120,10 @@ export const createRouter = routes => new Router({
       name: 'register',
       component: Register
     },
-    {
-      path: '/backindex',
-      name: 'backindex',
-      component: BackIndex,
-    }
+    // {
+    //   path: '/backindex',
+    //   name: 'backindex',
+    //   component: BackIndex,
+    // }
   ]
 })
