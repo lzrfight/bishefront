@@ -12,16 +12,17 @@
     <!--index 没有用但是必需字段-->
     <el-submenu  v-for="(item,i) in adminMenus" :key="i" :index="(i).toString()" style="text-align: left">
         <span slot="title" style="font-size: 17px;">
-          <i :class="item.iconCls"></i>
-          {{item.nameZh}}
+          <i :class="item.icon"></i>
+          {{item.namezh}}
         </span>
       <el-menu-item v-for="child in item.children" :key="child.path" :index="child.path">
         <i :class="child.icon"></i>
-        {{ child.nameZh }}
+        {{ child.namezh }}
       </el-menu-item>
     </el-submenu>
   </el-menu>
 </template>
+
 
 <script>
   export default {
@@ -32,14 +33,14 @@
       }
     },
     computed: {
-      adminMenus () {
+      adminMenus() {
         return this.$store.state.adminMenus
       },
-      currentPath () {
-        return this.$route.path
-      }
+        currentPath () {
+          return this.$route.path
+        }
+       }
     }
-  }
 </script>
 
 <style scoped>
