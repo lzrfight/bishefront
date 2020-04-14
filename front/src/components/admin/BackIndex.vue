@@ -26,6 +26,7 @@
         dialogVisible: false
       }
     },
+
     mounted () {
       // this.$router.replace('/admin/dashboard')
     }
