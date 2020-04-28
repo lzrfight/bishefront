@@ -6,13 +6,12 @@ import Home from '../components/Home'
 import AppIndex from "../components/home/AppIndex"
 import Register from "../components/user/Register"
 import NavMenu from "../components/common/NavMenu";
-const AdminLogin = () => import('../components/admin/AdminLogin')
 const BackIndex = () => import('../components/admin/BackIndex')
-// import AdminLogin from "../components/admin/AdminLogin";
 import Food from "../components/food/Food";
 import FoodIndex from "../components/food/FoodIndex";
 import Shopping from "../components/food/Shopping";
 import order from "../components/order/order";
+import AllOrder from "../components/admin/superadmin/AllOrder";
 
 Vue.use(Router)
 
@@ -30,9 +29,6 @@ export default new Router({
           path: '/index',
           name: 'AppIndex',
           component: AppIndex,
-          meta: {
-            requireAuth: true
-          }
         },
         {
           path: '/food',
@@ -43,9 +39,6 @@ export default new Router({
           path: '/restaurant',
           name: 'restaurant',
           component: Restaurant,
-          meta: {
-
-          }
         },
       ]
     },
@@ -62,12 +55,14 @@ export default new Router({
     {
       path: '/admin',
       name: 'backindex',
-      component: BackIndex
-    },
-    {
-      path:'/loginadmin',
-      name:'AdminLogin',
-      component: AdminLogin
+      component: BackIndex,
+      children:[
+        {
+          path: '/admin/superadmin/allorder',
+          name: 'allorder',
+          component: () => import('../components/admin/superadmin/AllOrder'),
+        }
+      ]
     },
     {
       path:'/shopping',

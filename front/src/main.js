@@ -15,6 +15,8 @@ var axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8443/api'
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
+//携带sessionID
+axios.defaults.withCredentials = true
 Vue.use(ElementUI)
 /* eslint-disable no-new */
 // router.beforeEach((to, from, next) => {
@@ -36,30 +38,47 @@ Vue.use(ElementUI)
 // //这里有问题 一使用就直接空白 什么也没有不知道什么问题
 router.beforeEach((to,from,next) =>
 {
-  if (store.state.adminuser.adminname && to.path.startsWith('/admin'))
+  if (store.state.user.username && to.path.startsWith('/admin'))
   {
     initAdminMenu(router,store)
     console.info("金融1")
   }
-  if (store.state.adminuser.adminname && to.path.startsWith('/loginadmin'))
+  if (store.state.user.username && to.path.startsWith('/system'))
   {
     next(
       {
         path: '/admin'
       })
+  }if (to.meta.requireAuth) {
+  //判断 store 里有没有存储 user 的信息，如果存在，则放行
+  if (store.state.user) {
+    axios.get('/authentication').then(resp=>{
+      console.log(resp)
+      if (resp.data) {
+        next();
+      }
+    })
+  }else{//否则跳转到登录页面
+    //并存储访问的页面路径（以便在登录后跳转到访问页）
+    next({
+      path:'/login',//应该要修改这个路径
+      query:{redirect:to.fullPath}
+    })
   }
-  else {
-    next()
-    console.info("进入next")
-  }
- })
+}else {
+  next();
+}
+})
+
 const initAdminMenu = (router, store) => {
   // 防止重复触发加载菜单操作
-  // if (store.state.adminMenus.length > 0) {
-  //   return
-  // }
+  if (store.state.adminMenus.length > 0) {
+    return
+  }
   console.info("能进入init方法")
-  axios.get('/menu').then(resp => {
+  axios.post('/menu', {
+   username: store.state.user.username
+  }).then(resp => {
     if (resp && resp.status === 200) {
       // console.info(resp.data)
       var fmtRoutes = formatRoutes(resp.data)

@@ -1,7 +1,7 @@
 <template>
 <!--class与style绑定-->
   <el-card class="card-carousel">
-    <el-carousel  class="push" :interval="4000" arrow="always">
+    <el-carousel  class="push" :interval="400" arrow="always">
 <!--v-for对列表进行遍历 items里的东西放在item里-->
       <el-carousel-item v-for="item in items" :key="item.id">
 <!--a href target blank在新窗口打开连接 self当前 parent父窗口-->
@@ -24,8 +24,8 @@
   }
   .card-carousel {
     /*margin: 0 auto;*/
-    margin-top: 500px;
-    margin-left: 500px;
+    margin-top: 50px;
+    margin-left: 800px;
     width: 680px;
     height: 320px;
   }

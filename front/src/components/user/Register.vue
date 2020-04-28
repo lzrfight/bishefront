@@ -41,7 +41,7 @@
                 confirmButtonText: '确定'
               })
               this.$router.replace('/login')
-            } else {
+            } else if(resp.data.code === 400){
               this.$alert(resp.data.message, '提示', {
                 confirmButtonText: '确定'
               })
