@@ -12,12 +12,22 @@ import FoodIndex from "../components/food/FoodIndex";
 import Shopping from "../components/food/Shopping";
 import order from "../components/order/order";
 import AllOrder from "../components/admin/superadmin/AllOrder";
+import New from "../components/new/New";
+import face from "../components/face";
+import board from "../components/admin/superadmin/board";
+import ArticalEditor from "../components/admin/superadmin/ArticalEditor";
+import NewDetail from "../components/new/NewDetail";
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path:'/face',
+      name:'face',
+      component: face
+    },
     // 下面都是固定的写法
     {
       path: '/home',
@@ -40,6 +50,16 @@ export default new Router({
           name: 'restaurant',
           component: Restaurant,
         },
+        {
+          path: '/new',
+          name: 'new',
+          component: New
+        },
+        {
+          path:'/new/article',
+          name:'NewDetail',
+          component:NewDetail
+        }
       ]
     },
     {
@@ -73,6 +93,11 @@ export default new Router({
       path:'/order',
       name:'order',
       component:order,
+    },
+    {
+      path:'/editor',
+      name:'ArticalEditor',
+      component: ArticalEditor,
     }
   ]
 })
@@ -91,17 +116,12 @@ export const createRouter = routes => new Router({
           path: '/index',
           name: 'AppIndex',
           component: AppIndex,
-          meta: {
-            requireAuth: true
-          }
+
         },
         {
           path: '/restaurant',
           name: 'restaurant',
           component: Restaurant,
-          meta: {
-            requireAuth: true
-          }
         }
       ]
     },

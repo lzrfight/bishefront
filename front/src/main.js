@@ -7,8 +7,29 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import BaiduMap from 'vue-baidu-map'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+import GoEasy from 'goeasy';
+import VCharts from 'v-charts'
 Vue.use(BaiduMap, {
   ak: 'Y1EV7WFc0COFApGokHLvb3iZYMHeS11q'
+})
+Vue.use(mavonEditor)
+Vue.use(VCharts)
+//即时通信调用goEasy 4.27
+Vue.prototype.$goEasy=new GoEasy({
+  host:'hangzhou.goeasy.io',
+  appkey:'BC-4bbb2278bb41404eb09f35cc83d8442f',
+  onConnected: function() {
+    console.log('连接成功！')
+
+  },
+  onDisconnected: function() {
+    console.log('连接断开！')
+  },
+  onConnectFailed: function(error) {
+    console.log('连接失败或错误！')
+  }
 })
 
 var axios = require('axios')
@@ -47,7 +68,7 @@ router.beforeEach((to,from,next) =>
   {
     next(
       {
-        path: '/admin'
+        path: '/admin/first'
       })
   }if (to.meta.requireAuth) {
   //判断 store 里有没有存储 user 的信息，如果存在，则放行

@@ -9,33 +9,42 @@
       >
   <el-table-column
     prop="name"
-    label="食品"
-    width="300">
-
+    label="食品">
   </el-table-column>
   <el-table-column
     prop= "amount"
-    label="数量"
-    width="300">
+    label="数量">
+<!--    <template slot-scope="scope">-->
+<!--      <el-input-number :value="scope.row.amount"-->
+<!--                       controls-position="right"-->
+<!--                       size="small"-->
+<!--                       @change="handleChangeLevels(scope.row,$event)"-->
+<!--                       :min="0" :max="1000">-->
+<!--      </el-input-number>-->
+<!--    </template>-->
   </el-table-column>
   <el-table-column
     prop= "money"
-    label="金额"
-    width="300">
+    label="金额">
   </el-table-column>
 
       <el-table-column
         fixed="right"
-        label="操作"
-        width="120">
+        label="操作">
 
         <template slot-scope="scope">
 
+<!--          <el-button-->
+<!--            @click.native.prevent="delete1(scope.row.name)"-->
+<!--            type="text"-->
+<!--            size="small">-->
+<!--           修改数量-->
+<!--          </el-button>-->
           <el-button
             @click.native.prevent="delete1(scope.row.name)"
             type="text"
             size="small">
-           删除
+            删除
           </el-button>
         </template>
 
@@ -51,7 +60,8 @@
       name: "Shopping",
       data() {
         return {
-          tableData:[]
+          tableData:[],
+          num4:''
         }
       },
       mounted: function () {
@@ -106,12 +116,22 @@
                 }, 0);
                 sums[index] += ' ';
               } else {
-                sums[index] = 'N/A';
+                sums[index] = '';
               }
             });
 
             return sums;
-          }
+          },
+          // handleChangeLevels (row, val) {
+          //   console.log(row)
+          //   console.log(val)
+          //   this.tableData.map(v => {
+          //     console.log(v.id)
+          //     if (row.id === v.id) {
+          //       this.$set(v, 'amount', val)//通过$set设置数据集合里面的参数进行渲染
+          //     }
+          //   })
+          // },
         }
     }
 </script>

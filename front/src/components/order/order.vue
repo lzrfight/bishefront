@@ -15,7 +15,7 @@
           prop="name"
           label="食品">
 
-        </el-table-column>/0
+        </el-table-column>
         <el-table-column
           prop= "amount"
           label="数量">
@@ -30,10 +30,11 @@
         <el-date-picker
           v-model="value1"
           type="datetime"
+          value-format="yyyy-MM-dd HH:mm:ss"
           placeholder="选择日期时间">
         </el-date-picker>
       </div>
-      <el-select v-model="value2"placeholder="请选择">
+      <el-select v-model="value2" placeholder="请选择">
         <el-option
           v-for="item in options"
           :key="item.id"
@@ -102,7 +103,7 @@
         },
         selectshop() {
           const _this = this
-          this.$axios.get('/findshop').then(resp => {
+          this.$axios.get('/findopenshop').then(resp => {
             if (resp && resp.status === 200) {
               _this.options = resp.data;
             }
@@ -139,5 +140,6 @@
 </script>
 
 <style scoped>
+
 
 </style>

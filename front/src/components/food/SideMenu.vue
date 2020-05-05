@@ -6,23 +6,23 @@
     active-text-color="red">
     <el-menu-item index="0">
       <i class="el-icon-menu"></i>
-      <span slot="title">热销</span>
+      <span slot="title">全部</span>
     </el-menu-item>
     <el-menu-item index="1">
       <i class="el-icon-menu"></i>
-      <span slot="title">折扣</span>
+      <span slot="title">主食</span>
     </el-menu-item>
     <el-menu-item index="2">
       <i class="el-icon-menu"></i>
-      <span slot="title">套餐</span>
+      <span slot="title">配菜</span>
     </el-menu-item>
     <el-menu-item index="3">
       <i class="el-icon-menu"></i>
-      <span slot="title">单点</span>
+      <span slot="title">饮料</span>
     </el-menu-item>
     <el-menu-item index="4">
       <i class="el-icon-menu"></i>
-      <span slot="title">饮料</span>
+      <span slot="title">未知</span>
     </el-menu-item>
     <el-menu-item index="5">
       <i class="el-icon-menu"></i>
@@ -41,7 +41,7 @@
       },
       methods: {
         handleSelect (key, keyPath) {
-          this.cid = key
+          this.cid = key;
           this.$emit('indexSelect')
         }
       }

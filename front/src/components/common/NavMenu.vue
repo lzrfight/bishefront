@@ -29,7 +29,7 @@
         navList: [
           {name: '/index', navItem: '首页'},
           {name: '/food', navItem: '点餐'},
-          {name: '/discount', navItem: '促销'},
+          {name: '/new', navItem: '新闻中心'},
           {name: '/restaurant', navItem: '餐厅'},
           {name: '/system', navItem: '个人中心'}
         ]

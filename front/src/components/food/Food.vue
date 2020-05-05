@@ -10,7 +10,7 @@
         <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
         <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
                  bodyStyle="padding:10px" shadow="hover">
-          <div class="cover" @click="editBook(item)">
+          <div class="cover">
             <img :src="item.pic" alt="封面">
           </div>
           <div class="info">
@@ -37,6 +37,7 @@
   </div>
 </template>
 <script>
+
     export default {
       name: "Food",
       data() {
@@ -44,12 +45,12 @@
           food:[],
           currentPage: 1,
           pagesize: 17,
-
+          number:''
         }
       },
+
       mounted: function () {
         this.loadFood()
-        // this.findcart()
       },
       methods: {
         loadFood() {
@@ -57,6 +58,7 @@
           this.$axios.get('/food').then(resp => {
             if (resp && resp.status === 200) {
               _this.food = resp.data
+              console.log(food+"hahahahahahahahah")
             }
           })
         },

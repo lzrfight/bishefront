@@ -14,11 +14,18 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "ajv": "^5.5.2",
     "axios": "^0.19.2",
+    "bus.js": "^0.9.3",
+    "echarts": "^4.7.0",
     "element": "^0.1.4",
     "element-ui": "^2.13.0",
+    "goeasy": "^1.0.9",
+    "mavon-editor": "^2.9.0",
+    "v-charts": "^1.19.0",
     "vue": "^2.5.2",
     "vue-baidu-map": "^0.21.22",
+    "vue-count-to": "^1.0.13",
     "vue-router": "^3.0.1",
     "vuex": "latest"
   },

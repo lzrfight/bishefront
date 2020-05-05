@@ -1,10 +1,13 @@
 <template>
   <div>
-    <carousel></carousel>
+    <carousel style="width: 100%;height: 100%"></carousel>
+    <a href="/restaurant">
+    <img src="@/assets/寻找餐厅.png" style="width: 100%"  alt="寻找餐厅.png" >
+    </a>
+    <a href="/login">
+    <img src="@/assets/joinus.png" style="width: 100%"  alt="joinus.png">
+    </a>
   <router-view/>
-    <span>公告</span>
-    <el-divider ></el-divider>
-    <span>公告1 毕设真是从0学起，太难了</span>
   </div>
 
 

@@ -1,7 +1,16 @@
 <template>
-    <baidu-map class="map" center="桂林">
-  <bm-point-collection :points="points" shape="BMAP_POINT_SHAPE_STAR" color="red" size="BMAP_POINT_SIZE_BIG" @click="clickHandler"></bm-point-collection>
+<!--    <baidu-map class="map" center="中国" scroll-wheel-zoom="true">-->
+<!--  <bm-point-collection :points="points" color="red" size="BMAP_POINT_SIZE_BIG" @click="clickHandler"></bm-point-collection>-->
+<!--      <label>关键词：<input v-model="keyword"></label>-->
+<!--      <label>地区：<input v-model="location"></label>-->
+<!--  </baidu-map>-->
+  <div>
+  <baidu-map scroll-wheel-zoom="true" ::autoLocation="true">
+    <bm-city-list anchor="BMAP_ANCHOR_TOP_LEFT" style=""></bm-city-list>
+    <bm-view class="map"></bm-view>
+    <bm-local-search :keyword="keyword" :auto-viewport="true" :location="location" :selectFirstResult="true" :pageCapacity = 1></bm-local-search>
   </baidu-map>
+  </div>
 </template>
 
 <script>
@@ -9,26 +18,28 @@
         name: "restaurant",
      data () {
       return {
-        points: []
+        points: [],
+        keyword:[],
+        location:''
       }
     },
       mounted() {
           this.addPoints()
       },
       methods: {
-      clickHandler (e) {
-        alert(`单击点的坐标为：${e.point.lng}, ${e.point.lat}`);
-      },
-      addPoints () {
-        const points = [];
-        const  position = {lng:110.421862,lat: 25.325509}
-        points.push(position)
-        // for (var i = 0; i < 1000; i++) {
-        //   const position = {lng: Math.random() * 40 + 85, lat: Math.random() * 30 + 21}
-        //   points.push(position)
-        this.points = points
+        clickHandler(e) {
+          alert(`单击点的坐标为：${e.point.lng}, ${e.point.lat}`);
         },
-
+        addPoints() {
+          const _this = this
+          this.$axios.post('/address').then(resp =>
+          {
+            if (resp && resp.status ===200)
+            {
+              _this.keyword = resp.data
+            }
+          })
+        }
       }
   }
 </script>
