@@ -14,7 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "ajv": "^5.5.2",
+    "ajv": "^6.12.3",
     "axios": "^0.19.2",
     "bus.js": "^0.9.3",
     "echarts": "^4.7.0",
